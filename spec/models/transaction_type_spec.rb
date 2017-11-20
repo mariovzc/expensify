@@ -22,8 +22,8 @@ RSpec.describe TransactionType, type: :model do
     expect(subject).to_not be_valid
   end
 
-  #it "should have many expenses" do
-  #  t = described_class.reflect_on_association(:expenses)
-  #  expect(t.macro).to eq(:has_many)
-  #end
+  it "should have many expenses" do
+    t = described_class.reflect_on_association(:expenses)
+    expect(t.macro).to eq(:has_many)
+  end
 end
