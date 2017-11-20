@@ -4,8 +4,6 @@ RSpec.describe ExpensesController, type: :controller do
   describe "GET #index" do
     before do
       get :index
-      @category =  Category.create( name: 'category')
-      @transaction_type = TransactionType.create( name: 'transaction_type')    
     end
 
     it "assigns @expenses" do
