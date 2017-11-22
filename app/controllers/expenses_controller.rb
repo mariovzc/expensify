@@ -5,6 +5,8 @@ class ExpensesController < ApplicationController
     @title = "Mis Gastos"
     @tab = :expenses
     @expenses = Expense.all
+    @categories= Category.all
+    @types = TransactionType.all
   end
   def show
   end
