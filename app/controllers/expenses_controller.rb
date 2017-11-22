@@ -8,4 +8,7 @@ class ExpensesController < ApplicationController
     @categories= Category.all
     @types = TransactionType.all
   end
+  def show
+    @expense = Expense.find(params[:id])    
+  end
 end
