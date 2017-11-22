@@ -1,0 +1,72 @@
+<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+  <h1><%= @title %></h1>
+
+  <section class="row text-center placeholders">
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <div class="text-muted">Total</div>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Transacciones</span>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Promedio</span>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Promedio Mensual</span>
+    </div>
+  </section>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#expenses-form" >Primary</button>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Concepto</th>
+          <th>Categoria</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1,001</td>
+          <td>Lorem</td>
+          <td>ipsum</td>
+          <td>dolor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<div class="modal fade" id="expenses-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

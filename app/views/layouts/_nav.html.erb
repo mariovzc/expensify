@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-green">
-  <a class="navbar-brand" href="#">Expensify</a>
-  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item  <%= 'active' if @tab == :dashboard %>">
-        <%= link_to  "Dashboard", root_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item <%= 'active' if @tab == :expenses %>">
-        <%= link_to  "Gastos", expenses_path, class: 'nav-link' %>
-      </li>
-    </ul>
-  </div>
-</nav>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-green">
+    <a class="navbar-brand" href="#">Expensify</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item  <%= 'active' if @tab == :dashboard %>">
+          <%= link_to  "Dashboard", root_path, class: 'nav-link menu-link' %>
+        </li>
+        <li class="nav-item <%= 'active' if @tab == :expenses %>">
+          <%= link_to  "Gastos", expenses_path, class: 'nav-link menu-link' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
