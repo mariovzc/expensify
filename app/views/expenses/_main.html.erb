@@ -1,0 +1,99 @@
+<main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+  <h1><%= @title %></h1>
+  <section class="row text-center placeholders">
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <div class="text-muted">Total</div>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Transacciones</span>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Promedio</span>
+    </div>
+    <div class="col-6 col-sm-3 placeholder">
+      <h4>Label</h4>
+      <span class="text-muted">Promedio Mensual</span>
+    </div>
+  </section>
+  <button type="button" class="btn btn-primary expense-btn" data-toggle="modal" data-target="#expenses-form" >New Expense</button>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Concepto</th>
+          <th>Categoria</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1,001</td>
+          <td>Lorem</td>
+          <td>ipsum</td>
+          <td>dolor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<div class="modal fade" id="expenses-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Expense</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Tipo:</label>
+                  <%= select_tag 'type_id', options_from_collection_for_select(@types, 'id', 'name'), class: 'form-control', id: 'type_id'%>                  
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Fecha:</label>
+                  <input type="date" class="form-control" name="date" id="date">                  
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Concepto:</label>
+                  <input type="text" class="form-control" name="concept" id="concept">                  
+                </div>                    
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Categoria:</label>
+                  <%= select_tag 'category_id', options_from_collection_for_select(@categories, 'id', 'name'), class: 'form-control', id: 'category_id'%>                  
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Cantidad:</label>
+                  <input type="number" class="form-control" name="amount" id="amount" value="0">                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
