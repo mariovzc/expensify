@@ -2,6 +2,8 @@ class ExpensesController < ApplicationController
   respond_to :json, except: [:index]
   
   def index
+    @title = "Mis Gastos"
+    @tab = :expenses
     @expenses = Expense.all
   end
   def show
