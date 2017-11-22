@@ -13,6 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'rb-readline'
 gem 'annotate'
+gem 'responders'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -21,6 +22,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.6'
+  gem 'rails-controller-testing'
 end
 
 group :development do
