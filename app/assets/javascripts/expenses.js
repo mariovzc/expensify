@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', () => {
-  console.log('loading vals') 
+  console.log('loading vals')
   $('#expense-form').validate({
     rules: {
       'date': {required: true},
@@ -29,23 +29,23 @@ $(document).on('turbolinks:load', () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'OK'
           }).then(function (result) {
-            document.location.reload()            
+            document.location.reload()
           })
         }
       })
     }
   })
-  $('.delete-btn').click(() => {
+  $('.delete-btn').click( function () {
     let id = $(this).val()
     swal.queue([{
       title: 'Eliminar',
       confirmButtonText: 'ok :-(',
       cancelButtonText: 'Cancelar',
       showCancelButton: true,
+      confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false,
       text: '¿Estas seguro de que deseas eliminar el gasto?',
-      showLoaderOnConfirm: true,
       preConfirm: function () {
         $.ajax({
           url: '/api/v1/expenses/' + id,
@@ -56,6 +56,8 @@ $(document).on('turbolinks:load', () => {
       }
     }])
   })
-  $('.edit-btn').click(() => {
+  $('.edit-btn').click( function () {
+    let id = $(this).val()
+    console.log(id)
   })
 })
