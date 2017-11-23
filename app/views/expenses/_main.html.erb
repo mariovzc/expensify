@@ -39,7 +39,10 @@
           <td><%= expense.transaction_type.name %></td>
           <td><%= expense.category.name %></td>
           <td><%= number_to_currency(expense.amount, unit: "COP ", precision: 0) %></td>
-          <td>borrar - editar</td>
+          <td>
+            <button value="<%=expense.id%>" class="btn btn-primary btn-sm op-btn edit-btn"><i class="material-icons">mode_edit</i></button>
+            <button value="<%=expense.id%>" class="btn btn-danger btn-sm op-btn delete-btn"><i class="material-icons">delete</i></button>            
+          </td>
         </tr>
         <%end%>
       </tbody>
