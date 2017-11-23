@@ -60,51 +60,25 @@
           </button>
         </div>
         <form id="expense-form">
-          <div class="modal-body">
-            <div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Tipo:</label>
-                    <%= select_tag 'transaction_type_id', options_from_collection_for_select(@types, 'id', 'name'), class: 'form-control', id: 'transaction_type_id', include_blank: "Tipo de transacción...", name:'transaction_type_id', required: true%>                  
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Fecha:</label>
-                    <input type="date" class="form-control" name="date" id="date" required>                  
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Concepto:</label>
-                    <input type="text" class="form-control" name="concept" id="concept" required>                  
-                  </div>                    
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Categoria:</label>
-                    <%= select_tag 'category_id', options_from_collection_for_select(@categories, 'id', 'name'), class: 'form-control', id: 'category_id', include_blank: "Categoria....", name: 'category_id', required: true%>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Cantidad:</label>
-                    <input type="number" class="form-control" name="amount" id="amount" required>                  
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button class="btn btn-primary">Guardar </button>
-          </div>
+          <%= render 'form'%>
         </form>
       </div>
     </div>
   </div>
+
+<div class="modal fade" id="edit-expenses-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Expense</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="edit-expense-form">
+        <input type="hidden" name="id" value="" id="expense_id">
+        <%= render 'form'%>
+      </form>
+    </div>
+  </div>
+</div>
