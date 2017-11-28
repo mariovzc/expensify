@@ -42,7 +42,7 @@ h1 {
 
 .sidebar {
   position: fixed;
-  top: 51px;
+  top: 38px;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -77,8 +77,13 @@ h1 {
   padding-bottom: 3rem;
 }
 
-
-
 .expense-btn{
   margin-bottom: 20px;
+}
+
+.error{
+  color: #F44336;
+}
+.op-btn{
+  line-height: 0.5;
 }

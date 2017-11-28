@@ -18,4 +18,31 @@ class Expense < ApplicationRecord
 
   validates :concept, :date, :category_id, :transaction_type_id , presence: true
   validates :amount, numericality: true, presence: true
+
+  def self.search(transaction_type_id: nil, category_id: nil, month: nil, year: nil)
+    with_transaction_type_id(transaction_type_id)
+      .with_category_id(category_id)
+      .with_month(month)
+      .with_year(year)  
+  end
+  scope :with_transaction_type_id, proc { |transaction_type_id|
+    if transaction_type_id.present?
+      where(transaction_type_id: transaction_type_id)
+    end
+  }
+  scope :with_category_id, proc { |category_id|
+    if category_id.present?
+      where(category_id: category_id)
+    end
+  }
+  scope :with_month, proc { |month| 
+    if month.present?
+      where("cast(strftime('%m', created_at) as int) = ?", month)      
+    end
+  }
+  scope :with_year, proc { |year| 
+  if year.present?
+    where("cast(strftime('%Y', created_at) as int) = ?", year)
+  end
+}
 end
