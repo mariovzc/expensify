@@ -2,15 +2,15 @@
   <h1><%= @title %></h1>
   <section class="row text-center placeholders">
     <div class="col-6 col-sm-4 placeholder">
-      <h4>Label</h4>
+      <h4><%= number_to_currency(expenses_total, unit: "COP ", precision: 0) %></h4>
       <div class="text-muted">Total</div>
     </div>
     <div class="col-6 col-sm-4 placeholder">
-      <h4>Label</h4>
-      <span class="text-muted"><%= @expenses.count %></span>
+      <h4><%= @expenses.count %></h4>
+      <span class="text-muted">Gastos</span>
     </div>
     <div class="col-6 col-sm-4 placeholder">
-      <h4>Label</h4>
+      <h4><%= number_to_currency(expenses_average, unit: "COP ", precision: 0) %></h4>
       <span class="text-muted">Promedio</span>
     </div>
   </section>
