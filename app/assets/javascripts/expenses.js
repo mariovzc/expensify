@@ -1,5 +1,8 @@
 $(document).on('turbolinks:load', () => {
   console.log('loading vals')
+  let hiddenDate = `${localStorage.getItem('date_selected')}`
+  $('#month_selector').val(hiddenDate)
+  
   $('#expense-form').validate({
     rules: {
       'date': {required: true},
@@ -113,7 +116,21 @@ $(document).on('turbolinks:load', () => {
 
   $('.checkbox').change(function () {
     if (this.checked) {
-      $('#search-expense-form').submit()
+      setParams()
     }
   })
+
+  $('.select').change(function (e) {
+    setParams()
+  })
+
+  function setParams () {
+    var checks = $('.checkbox:checked').map(function () {
+      return {name: this.name, value: this.value}
+    }).get()
+    let date = new Date($('#month_selector').val())
+    localStorage.setItem("date_selected", $('#month_selector').val())
+    
+    window.location.href = `/expenses?utf8=✓&month=${date.getMonth() + 1}&year=${date.getFullYear()}&${checks[0].name}=${checks[0].value}&${checks[1].name}=${checks[1].value}`
+  }
 })
