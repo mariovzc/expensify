@@ -7,7 +7,3 @@ before_script:
   - bundle exec rake db:seed
 script:
   - bundle exec rspec
-services:
-  - postgresql
-notifications:
-  email: false
