@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', () => {
       })
     }
   })
-  $('.delete-btn').click( function () {
+  $('.delete-btn').click(function () {
     let id = $(this).val()
     swal.queue([{
       title: 'Eliminar',
@@ -56,7 +56,7 @@ $(document).on('turbolinks:load', () => {
       }
     }])
   })
-  $('.edit-btn').click( function () {
+  $('.edit-btn').click(function () {
     let id = $(this).val()
     let obj = []
     $.ajax({
@@ -109,5 +109,11 @@ $(document).on('turbolinks:load', () => {
         }
       })
     })
+  })
+
+  $('.checkbox').change(function () {
+    if (this.checked) {
+      $('#search-expense-form').submit()
+    }
   })
 })
