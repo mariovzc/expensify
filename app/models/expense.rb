@@ -18,4 +18,20 @@ class Expense < ApplicationRecord
 
   validates :concept, :date, :category_id, :transaction_type_id , presence: true
   validates :amount, numericality: true, presence: true
+
+  def self.search(transaction_type_id: nil, category_id: nil)
+    with_transaction_type_id(transaction_type_id)
+      .with_category_id(category_id)
+  end
+  scope :with_transaction_type_id, proc { |transaction_type_id|
+    if transaction_type_id.present?
+      where(transaction_type_id: transaction_type_id)
+    end
+  }
+  scope :with_category_id, proc { |category_id|
+    if category_id.present?
+      where(category_id: category_id)
+    end
+  }
+
 end
