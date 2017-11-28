@@ -1,24 +1,29 @@
 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
   <h1><%= @title %></h1>
   <section class="row text-center placeholders">
-    <div class="col-6 col-sm-3 placeholder">
+    <div class="col-6 col-sm-4 placeholder">
       <h4>Label</h4>
       <div class="text-muted">Total</div>
     </div>
-    <div class="col-6 col-sm-3 placeholder">
+    <div class="col-6 col-sm-4 placeholder">
       <h4>Label</h4>
-      <span class="text-muted">Transacciones</span>
+      <span class="text-muted"><%= @expenses.count %></span>
     </div>
-    <div class="col-6 col-sm-3 placeholder">
+    <div class="col-6 col-sm-4 placeholder">
       <h4>Label</h4>
       <span class="text-muted">Promedio</span>
     </div>
-    <div class="col-6 col-sm-3 placeholder">
-      <h4>Label</h4>
-      <span class="text-muted">Promedio Mensual</span>
-    </div>
   </section>
-  <button type="button" class="btn btn-primary expense-btn" data-toggle="modal" data-target="#expenses-form-modal" >Nuevo Gasto</button>
+  <div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary expense-btn" data-toggle="modal" data-target="#expenses-form-modal" >Nuevo Gasto</button>
+      </div>
+      <div class="col-md-3 offset-md-6">
+        <%= select_tag 'month', options_for_select(@months.collect { |month| [month[:name],month[:value].to_s] }, 1), { id:'month_selector', class: 'form-control select' } %>
+      </div>
+    </div>    
+  </div>
   <div class="table-responsive">
     <table class="table table-striped text-center" id="expenses-table">
       <thead>
