@@ -52,6 +52,9 @@
         <%end%>
       </tbody>
     </table>
+    <div class="pagination-cnt">
+      <%= will_paginate @expenses, :previous_label => '<i class="material-icons">navigate_before</i>'.html_safe, :next_label => '<i class="material-icons">navigate_next</i>'.html_safe, class: 'digg_pagination' %>
+    </div>
   </div>
 </main>
 

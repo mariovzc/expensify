@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'jquery-validation-rails'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'pg', '~> 0.18'
+gem 'will_paginate'
 
 
 group :development, :test do
