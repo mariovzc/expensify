@@ -37,12 +37,12 @@ class Expense < ApplicationRecord
   }
   scope :with_month, proc { |month| 
     if month.present?
-      where("cast(strftime('%m', created_at) as int) = ?", month)      
+      where('extract(month  from date) = ?', month)
     end
   }
   scope :with_year, proc { |year| 
   if year.present?
-    where("cast(strftime('%Y', created_at) as int) = ?", year)
+    where('extract(year  from date) = ?', year)    
   end
 }
 end
