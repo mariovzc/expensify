@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item  <%= 'active' if @tab == :dashboard %>">
-          <%= link_to  "Dashboard", root_path, class: 'nav-link menu-link' %>
+          <%= link_to  "Dashboard", root_path, class: 'nav-link menu-link header-link' %>
         </li>
         <li class="nav-item <%= 'active' if @tab == :expenses %>">
-          <%= link_to  "Gastos", expenses_path, class: 'nav-link menu-link' %>
+          <%= link_to  "Gastos", expenses_path, class: 'nav-link menu-link header-link' %>
         </li>
       </ul>
     </div>

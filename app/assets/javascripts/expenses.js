@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', () => {
+$(document).on('turbolinks:load', function () {
   console.log('loading vals')
   let hiddenDate = localStorage.getItem('date_selected')
   if (hiddenDate != null) {
