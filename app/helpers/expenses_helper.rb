@@ -15,7 +15,7 @@ module ExpensesHelper
     months = []    
     (0..11).each do |i|      
       time = Time.now - i.month
-      months.push({ name: time.strftime("%B %Y"), value: time.strftime('%F')})
+      months.push({ name: I18n.l(time, format: '%B  %Y') , value: time.strftime('%F')})
     end
     months
   end
