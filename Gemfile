@@ -18,6 +18,7 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'pg', '~> 0.18'
 
 
 group :development, :test do
@@ -25,7 +26,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'sqlite3'
   gem 'rspec-rails', '~> 3.6'
   gem 'rails-controller-testing'
 end
