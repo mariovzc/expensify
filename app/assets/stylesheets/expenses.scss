@@ -30,6 +30,10 @@
   border-radius: 0;
 }
 
+.sidebar .nav-item .active{
+  background-color: #009688
+}
+
 /*
  * Dashboard
  */
@@ -39,8 +43,25 @@
   padding-bottom: 3rem;
 }
 
+.expense-btn, .edit-btn, .green-btn{
+  background-color: #00897B;
+  border-color: #00897B;
+}
 .expense-btn{
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
+}
+.expense-btn:hover, .edit-btn:hover, .green-btn:hover{
+  background-color: #009688;
+  border-color: #009688;
+  
+}
+.red-btn{
+  background-color: #C62828;
+  border-color: #C62828;
+}
+.red-btn:hover{
+  background-color: #D32F2F;
+  border-color: #D32F2F;
 }
 
 .error{
