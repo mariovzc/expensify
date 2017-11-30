@@ -1,8 +1,9 @@
 $(document).on('turbolinks:load', () => {
   console.log('loading vals')
-  let hiddenDate = `${localStorage.getItem('date_selected')}`
-  $('#month_selector').val(hiddenDate)
-  
+  let hiddenDate = localStorage.getItem('date_selected')
+  if (hiddenDate != null) {
+    $('#month_selector').val(hiddenDate)
+  }
   $('#expense-form').validate({
     rules: {
       'date': {required: true},
