@@ -4,20 +4,16 @@
       <span class="nav-link active" href="javascript:void(0)">Tipo de Transacción <span class="sr-only">(current)</span></span>
     </li>
     <li class="nav-item">
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <%= radio_button_tag 'transaction_type_id','', params[:transaction_type_id].try(:include?,''),{id: 'transaction_type_id_todos', class: 'form-check-input checkbox', checked: true} %>
-          Todos
-        </label>
+      <div class="form-check form-check-inline radio-item">
+        <%= radio_button_tag 'transaction_type_id','', params[:transaction_type_id].try(:include?,''),{id: 'transaction_type_id_todos', class: 'form-check-input checkbox', checked: true} %>
+        <label for="transaction_type_id_todos">Todos</label>
       </div>
     </li>
     <% @types.each do |type| %>
       <li class="nav-item">
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <%= radio_button_tag 'transaction_type_id',type.id, params[:transaction_type_id].try(:include?,type.id.to_s),{:id=>'transaction_type_id'+type.id.to_s, class: 'form-check-input checkbox'} %>
-            <%= type.name %>
-          </label>
+        <div class="form-check form-check-inline radio-item">
+          <%= radio_button_tag 'transaction_type_id',type.id, params[:transaction_type_id].try(:include?,type.id.to_s),{:id=>'transaction_type_id'+type.id.to_s, class: 'form-check-input checkbox'} %>
+          <%= label_tag 'transaction_type_id'+type.id.to_s, type.name %>
         </div>
       </li>
     <% end %>
@@ -27,20 +23,16 @@
       <span class="nav-link active" href="javascript:void(0)">Categoria<span class="sr-only">(current)</span></span>
     </li>
     <li class="nav-item">
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <%= radio_button_tag 'category_id','', params[:category_id].try(:include?,''),{id: 'category_id_todos', class: 'form-check-input checkbox', checked: true} %>
-          Todos
-        </label>
+      <div class="form-check form-check-inline radio-item">
+        <%= radio_button_tag 'category_id','', params[:category_id].try(:include?,''),{id: 'category_id_todos', class: 'form-check-input checkbox', checked: true} %>
+        <label for="category_id_todos">Todos</label>          
       </div>
     </li>
     <% @categories.each do |category| %>
       <li class="nav-item">          
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <%= radio_button_tag 'category_id',category.id, params[:category_id].try(:include?,category.id.to_s),{:id=>'category_id_'+category.id.to_s, class: 'form-check-input checkbox'} %>
-            <%= category.name %>
-          </label>
+        <div class="form-check form-check-inline radio-item">
+          <%= radio_button_tag 'category_id',category.id, params[:category_id].try(:include?,category.id.to_s),{:id=>'category_id_'+category.id.to_s, class: 'form-check-input checkbox'} %>
+          <%= label_tag 'category_id_'+category.id.to_s, category.name %>            
         </div>
       </li>
     <% end %>
