@@ -4,8 +4,8 @@ class Api::V1::ExpensesController < ApplicationController
   before_action :set_expense, only: [ :update, :destroy]
   
   def index
-    current_page = params[:page].present? ? params[:page] : 1
-    @expenses = Expense.paginate(page: current_page, per_page: 10)    
+    @current_page = params[:page].present? ? params[:page] : 1
+    @expenses = Expense.paginate(page: @current_page, per_page: 10)    
   end
 
   def create
