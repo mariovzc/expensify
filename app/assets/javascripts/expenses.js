@@ -129,9 +129,12 @@ $(document).on('turbolinks:load', function () {
     var checks = $('.checkbox:checked').map(function () {
       return {name: this.name, value: this.value}
     }).get()
-    let date = new Date($('#month_selector').val())
+    let date = new Date()
+    let dateSelector = $('#month_selector').val()
+    dateSelector = dateSelector.split('-')
+    date.setFullYear(dateSelector[0], dateSelector[1]-1, dateSelector[2])
     localStorage.setItem("date_selected", $('#month_selector').val())
     
-    window.location.href = `/expenses?utf8=✓&month=${date.getMonth() + 1}&year=${date.getFullYear()}&${checks[0].name}=${checks[0].value}&${checks[1].name}=${checks[1].value}`
+    window.location.href = `/expenses?utf8=✓&month=${date.getMonth()+1}&year=${date.getFullYear()}&${checks[0].name}=${checks[0].value}&${checks[1].name}=${checks[1].value}`
   }
 })
