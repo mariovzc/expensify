@@ -4,8 +4,8 @@ module ExpensesHelper
     str = "?"
     params.each_with_index do |(key, value), index|
       key == 'page' ? str+= "#{key}=#{(value.to_i + 1)}&" : str+= "#{key}=#{value}&"            
+      str = str.gsub( /.{1}$/, '' )  
     end
-    str = str.gsub( /.{1}$/, '' )
     if !params[:page]
       str += "&page=#{current_page + 1}"
     end
@@ -16,13 +16,14 @@ module ExpensesHelper
     str = "?"
     params.each_with_index do |(key, value), index|
       key == 'page' ? str+= "#{key}=#{(value.to_i - 1)}&" : str += "#{key}=#{value}&"            
+      str = str.gsub( /.{1}$/, '' )  
     end
 
     if !params[:page]
       str += "&page=#{current_page - 1}"
     end
     
-    current_page.to_i == 1 ? nil : url_for(only_path: false) + str.gsub( /.{1}$/, '' )
+    current_page.to_i == 1 ? nil : url_for(only_path: false) + str
   end
 
   def expenses_total
