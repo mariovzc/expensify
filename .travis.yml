@@ -1,6 +1,10 @@
 language: ruby
 rvm:
   - 2.4.1
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
 before_script:
   - bundle exec rake db:create --all
   - bundle exec rake db:migrate
