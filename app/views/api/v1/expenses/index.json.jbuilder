@@ -5,6 +5,5 @@ json.expenses @expenses do |expense|
   json.category expense.category, :id, :name
 end
 json.current_page @current_page.to_i
-json.last_page @expenses.total_pages
-json.next_page_url next_page(@current_page, @expenses.total_pages)
-json.prev_page_url prev_page(@current_page)
+json.next_page_url next_page(@current_page, @expenses.total_pages, request.GET)
+json.prev_page_url prev_page(@current_page, request.GET)

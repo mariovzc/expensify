@@ -5,7 +5,7 @@ class Api::V1::ExpensesController < ApplicationController
   
   def index
     @current_page = params[:page].present? ? params[:page] : 1
-    @expenses = Expense.paginate(page: @current_page, per_page: 10)    
+    @expenses = Expense.with_transaction_type_id(params[:transaction_type_id]).with_category_id(params[:category_id]).paginate(page: @current_page, per_page: 10)
   end
 
   def create
