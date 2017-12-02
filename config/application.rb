@@ -16,5 +16,11 @@ module Expensify
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = 'es-CO'
     config.i18n.enforce_available_locales = true
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete]
+      end
+    end
   end
 end
