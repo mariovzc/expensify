@@ -21,7 +21,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'pg', '~> 0.18'
 gem 'will_paginate'
 gem 'rails-i18n', '~> 5.0.0'
-
+gem 'api-pagination'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

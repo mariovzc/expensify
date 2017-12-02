@@ -51,6 +51,7 @@ GEM
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
+    api-pagination (4.6.3)
     arel (8.0.0)
     autoprefixer-rails (7.1.6)
       execjs
@@ -231,6 +232,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  api-pagination
   better_errors
   binding_of_caller
   bootstrap (~> 4.0.0.beta2.1)
