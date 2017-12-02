@@ -1,5 +1,13 @@
 module ExpensesHelper
 
+  def next_page(current_page, total_pages)
+    current_page.to_i == total_pages ? nil : url_for(only_path: false) + "?page=#{current_page.to_i + 1}"
+  end
+  
+  def prev_page(current_page)
+    current_page.to_i == 1 ? nil : url_for(only_path: false) + "?page=#{current_page.to_i - 1}"
+  end
+
   def expenses_total
     count = 0
     @expenses.each do |ex|
