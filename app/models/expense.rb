@@ -23,7 +23,8 @@ class Expense < ApplicationRecord
     with_transaction_type_id(transaction_type_id)
       .with_category_id(category_id)
       .with_month(month)
-      .with_year(year)  
+      .with_year(year)
+      .from_this_month()
   end
   scope :with_transaction_type_id, proc { |transaction_type_id|
     if transaction_type_id.present?
@@ -44,5 +45,9 @@ class Expense < ApplicationRecord
   if year.present?
     where('extract(year  from date) = ?', year)    
   end
-}
+  }
+  scope :from_this_month, lambda {
+    where("date > ? AND date < ?", Time.now.beginning_of_month, Time.now.end_of_month)
+  }
+  
 end
