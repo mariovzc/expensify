@@ -2,12 +2,35 @@ $(document).on('turbolinks:load', function () {
   $('.header-link').click(function () {
     localStorage.removeItem('date_selected')
   })
-  let charts = new Charts()
-  charts.categoryData()
-  charts.lastsSixMonths()
-  charts.byDayMonthly()
+  if (window.location.href.toString().split(window.location.host)[1] === '/') {
+    let charts = new Charts()
+  }
 })
 class Charts {
+  constructor () {
+    this.categoryData()
+    this.lastsSixMonths()
+    this.byDayMonthly()
+  }
+
+  categoryData () {
+    fetch('/chart/categories')
+    .then(response => response.json())
+    .then(json => this.chartByCategory(json.categories))
+  }
+
+  byDayMonthly () {
+    fetch('/chart/monthly')
+    .then(response => response.json())
+    .then(json => this.chartByDayMonthly(json.data))
+  }
+
+  lastsSixMonths () {
+    fetch('/chart/transaction')
+    .then(response => response.json())
+    .then(json => this.chartLast6Months(json.data))
+  }
+
   chartByCategory (data) {
     let options = {
       responsive: true,
@@ -44,16 +67,7 @@ class Charts {
       options: options
     })
   }
-  categoryData () {
-    fetch('/chart/categories')
-    .then(response => response.json())
-    .then(json => this.chartByCategory(json.categories))
-  }
-  lastsSixMonths () {
-    fetch('/chart/transaction')
-    .then(response => response.json())
-    .then(json => this.chartLast6Months(json.data))
-  }
+
   chartLast6Months (data) {
     let options = {
       responsive: true,
@@ -81,11 +95,6 @@ class Charts {
       data: data,
       options: options
     })
-  }
-  byDayMonthly () {
-    fetch('/chart/monthly')
-    .then(response => response.json())
-    .then(json => this.chartByDayMonthly(json.data))
   }
   chartByDayMonthly (data) {
     let options = {
