@@ -1,1 +1,1 @@
-json.content @data
+json.data @data

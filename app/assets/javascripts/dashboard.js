@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function () {
   let charts = new Charts()
   charts.categoryData()
   charts.lastsSixMonths()
+  charts.byDayMonthly()
 })
 class Charts {
   chartByCategory (data) {
@@ -75,6 +76,39 @@ class Charts {
       }
     }
     let ctx = document.getElementById('lastSixMonths')// .getContext('2d')
+    let myBarChart = new Chart (ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    })
+  }
+  byDayMonthly () {
+    fetch('/chart/monthly')
+    .then(response => response.json())
+    .then(json => this.chartByDayMonthly(json.data))
+  }
+  chartByDayMonthly (data) {
+    let options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      scales: {
+        xAxes: [{
+          stacked: true
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      }
+    }
+    let ctx = document.getElementById('byDayChart')// .getContext('2d')
     let myBarChart = new Chart (ctx, {
       type: 'bar',
       data: data,
