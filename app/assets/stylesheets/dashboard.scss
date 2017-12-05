@@ -1,8 +1,13 @@
-.chart{
-  vertical-align: middle;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  display: inline-block;
-
+.dashboard-container{
+  margin-top: 10px;
+  .card{
+    margin: 10px;
+    .chart{
+      vertical-align: middle;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      display: inline-block;
+    }
+  }
 }
