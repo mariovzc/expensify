@@ -1,12 +1,26 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="panel">
+        <div class="panel-heading">
+          Ultimos 6 Meses
+        </div>
+        <div class="panel-content">
+          <div>
+            <canvas id="lastSixMonths" class="chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-xs-12 col-md-6 col-lg-6">
       <div class="panel">
         <div class="panel-heading">
           Por Categoria
         </div>
         <div class="panel-content text-center">
-          <canvas id="byCategoryChar" width="300" height="300" class="chart"></canvas>
+          <div>
+            <canvas id="byCategoryChart"  class="chart"></canvas>
+          </div>
         </div>
       </div>
     </div>

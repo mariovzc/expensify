@@ -4,11 +4,13 @@ $(document).on('turbolinks:load', function () {
   })
   let charts = new Charts()
   charts.categoryData()
+  charts.lastsSixMonths()
 })
 class Charts {
   chartByCategory (data) {
     let options = {
       responsive: true,
+      maintainAspectRatio: false,
       animation: {
         animateScale: true,
         animateRotate: true
@@ -34,7 +36,7 @@ class Charts {
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: data.labels
     }
-    let ctx = document.getElementById('byCategoryChar')// .getContext('2d')
+    let ctx = document.getElementById('byCategoryChart')// .getContext('2d')
     let myDoughnutChart = new Chart (ctx, {
       type: 'doughnut',
       data: d,
@@ -42,10 +44,42 @@ class Charts {
     })
   }
   categoryData () {
-    fetch('/chart/categories.json')
+    fetch('/chart/categories')
     .then(response => response.json())
     .then(json => this.chartByCategory(json.categories))
-    return 1
+  }
+  lastsSixMonths () {
+    fetch('/chart/transaction')
+    .then(response => response.json())
+    .then(json => this.chartLast6Months(json.data))
+  }
+  chartLast6Months (data) {
+    let options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      scales: {
+        xAxes: [{
+          stacked: true
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      }
+    }
+    let ctx = document.getElementById('lastSixMonths')// .getContext('2d')
+    let myBarChart = new Chart (ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    })
   }
 }
 
