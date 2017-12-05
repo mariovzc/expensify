@@ -63,9 +63,36 @@ class DashboardController < ApplicationController
         data: values
       })
     end
-    expenses_days = Expense.with_month(month).with_year(year).with_day(13) #.group_by {|expense| expense.date.to_date }
     @data = {
       labels: days_in_a_month(days),
+      datasets: datasets
+    }
+  end
+
+  def accumulated_monthly
+    numbers = 
+    [
+      0, # current_month
+      -1 # last_month
+    ]
+    datasets = []
+    max = 0
+    numbers.each_with_index do |n, index|
+      date = Time.now + (n.month)
+      days = Time.days_in_month(date.month, date.year)
+      max = days > max ? days : max
+      datasets.push(
+        {
+          backgroundColor: colors[index],
+          data: days_expenses(days, date.month, date.year),
+          label: I18n.l(date, format: '%B  %Y'),
+          fill: 'start'
+        }
+      )
+    end
+
+    @data = {
+      labels: days_in_a_month(max),
       datasets: datasets
     }
   end
@@ -78,6 +105,14 @@ class DashboardController < ApplicationController
       arr.push(i+1)
     end
     arr
+  end
+
+  def days_expenses(days, month, year)
+    values = []    
+    days.times do |i|
+      values.push(Expense.with_month(month).with_year(year).with_day(i+1).sum(&:amount))
+    end
+    values
   end
 
   def colors
