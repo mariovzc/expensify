@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'chart/categories', to: 'dashboard#by_category', defaults: {format: :json}
   get 'chart/transaction', to: 'dashboard#last_6_months', defaults: {format: :json}
-  
+  get 'chart/monthly', to: 'dashboard#by_type_monthly', defaults: {format: :json}
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :expenses, only: [:index, :create, :update, :destroy]
