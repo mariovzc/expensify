@@ -11,6 +11,7 @@ class Charts {
     this.categoryData()
     this.lastsSixMonths()
     this.byDayMonthly()
+    this.accumulatedData()
   }
 
   categoryData () {
@@ -29,6 +30,12 @@ class Charts {
     fetch('/chart/transaction')
     .then(response => response.json())
     .then(json => this.chartLast6Months(json.data))
+  }
+
+  accumulatedData () {
+    fetch('/chart/accumulated')
+    .then(response => response.json())
+    .then(json => this.chartAccumulated(json.data))
   }
 
   chartByCategory (data) {
@@ -89,7 +96,7 @@ class Charts {
         }]
       }
     }
-    let ctx = document.getElementById('lastSixMonths')// .getContext('2d')
+    let ctx = document.getElementById('lastSixMonthsChart')// .getContext('2d')
     let myBarChart = new Chart (ctx, {
       type: 'bar',
       data: data,
@@ -123,6 +130,26 @@ class Charts {
       data: data,
       options: options
     })
+  }
+  chartAccumulated (data) {
+    let options = {
+      tooltips: {
+        mode: 'index',
+        intersect: false
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      }
+    }
+    let ctx = document.getElementById('accumulatedChart')// .getContext('2d')
+    let myLinesChart = new Chart (ctx, {
+      type: 'line',
+      data: data,
+      options: options
+    })    
   }
 }
 
