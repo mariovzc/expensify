@@ -1,6 +1,11 @@
 @import "bootstrap";
 @import "expenses";
 @import "pagination";
+@import "dashboard";
+
+body{
+  background-color: #F8F9FA;
+}
 .bg-green{
   background-color: #00897B !important;
 }
