@@ -1,17 +1,21 @@
 require "rails_helper"
 
 RSpec.feature "Expenses", :type => :feature do
-=begin
   scenario "User creates a new Expense" do
     visit "/expenses"
     
     click_button "Nuevo Gasto"
-    
-    click_button "Guardar"
 
+    select "Compras", :from => "transaction_type_id"
+    fill_in "date", with: "2017-12-07"
+    fill_in "concept", with: "hellooo moto"    
+    select "Restaurantes", :from => "category_id"
+    fill_in "amount", with: 20000
+    click_button "Guardar"
+    click_button "OK"
+    
     expect(page).to have_text("Mis Gastos")
   end
-=end
   scenario "User filter by date" do
     visit "/expenses"
     within '#month_selector' do
