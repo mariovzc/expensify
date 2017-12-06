@@ -34,7 +34,9 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'chromedriver-helper' # <- New!  
 end
-
+group :test do
+  gem 'database_cleaner'
+end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
