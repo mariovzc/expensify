@@ -1,44 +1,43 @@
+'use strict';
+
 $(document).on('turbolinks:load', function () {
   $('.header-link').click(function () {
-    localStorage.removeItem('date_selected')
-  })
+    localStorage.removeItem('date_selected');
+  });
   if (window.location.href.toString().split(window.location.host)[1] === '/') {
-    var charts = new Charts()
+    var charts = new Charts();
+    charts.start();
   }
-})
-class Charts {
-  constructor () {
-    this.categoryData()
-    this.lastsSixMonths()
-    this.byDayMonthly()
-    this.accumulatedData()
-  }
-
-  categoryData () {
-    fetch('/chart/categories')
-    .then(response => response.json())
-    .then(json => this.chartByCategory(json.categories))
-  }
-
-  byDayMonthly () {
-    fetch('/chart/monthly')
-    .then(response => response.json())
-    .then(json => this.chartByDayMonthly(json.data))
-  }
-
-  lastsSixMonths () {
-    fetch('/chart/transaction')
-    .then(response => response.json())
-    .then(json => this.chartLast6Months(json.data))
-  }
-
-  accumulatedData () {
-    fetch('/chart/accumulated')
-    .then(response => response.json())
-    .then(json => this.chartAccumulated(json.data))
-  }
-
-  chartByCategory (data) {
+});
+function Charts() {
+  var x = this;
+  x.start = function () {
+    this.categoryData();
+    this.lastsSixMonths();
+    this.byDayMonthly();
+    this.accumulatedData();
+  };
+  x.categoryData = function () {
+    $.get('/chart/categories', function (data) {
+      x.chartByCategory(data.categories);
+    });
+  };
+  x.byDayMonthly = function () {
+    $.get('/chart/monthly', function (data) {
+      x.chartByDayMonthly(data.data);
+    });
+  };
+  x.lastsSixMonths = function () {
+    $.get('/chart/transaction', function (data) {
+      x.chartLast6Months(data.data);
+    });
+  };
+  x.accumulatedData = function () {
+    $.get('/chart/accumulated', function (data) {
+      x.chartAccumulated(data.data);
+    });
+  };
+  x.chartByCategory = function (data) {
     var options = {
       responsive: true,
       maintainAspectRatio: false,
@@ -53,12 +52,12 @@ class Charts {
         enabled: true,
         mode: 'single',
         callbacks: {
-          label: function (tooltipItems, data) {
-            return formatter.format(data.datasets[0].data[tooltipItems.index])
+          label: function label(tooltipItems, data) {
+            return formatter.format(data.datasets[0].data[tooltipItems.index]);
           }
         }
       }
-    }
+    };
     var d = {
       datasets: [{
         data: data.values,
@@ -66,16 +65,16 @@ class Charts {
       }],
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: data.labels
-    }
-    var ctx = document.getElementById('byCategoryChart')// .getContext('2d')
-    var myDoughnutChart = new Chart (ctx, {
+    };
+    var ctx = document.getElementById('byCategoryChart'); // .getContext('2d')
+    var myDoughnutChart = new Chart(ctx, {
       type: 'doughnut',
       data: d,
       options: options
-    })
-  }
+    });
+  };
 
-  chartLast6Months (data) {
+  x.chartLast6Months = function (data) {
     var options = {
       responsive: true,
       maintainAspectRatio: false,
@@ -95,16 +94,16 @@ class Charts {
           stacked: true
         }]
       }
-    }
-    var ctx = document.getElementById('lastSixMonthsChart')// .getContext('2d')
-    var myBarChart = new Chart (ctx, {
+    };
+    var ctx = document.getElementById('lastSixMonthsChart'); // .getContext('2d')
+    var myBarChart = new Chart(ctx, {
       type: 'bar',
       data: data,
       options: options
-    })
-  }
-  chartByDayMonthly (data) {
-    let options = {
+    });
+  };
+  x.chartByDayMonthly = function (data) {
+    var options = {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
@@ -123,15 +122,15 @@ class Charts {
           stacked: true
         }]
       }
-    }
-    let ctx = document.getElementById('byDayChart')// .getContext('2d')
-    let myBarChart = new Chart (ctx, {
+    };
+    var ctx = document.getElementById('byDayChart'); // .getContext('2d')
+    var myBarChart = new Chart(ctx, {
       type: 'bar',
       data: data,
       options: options
-    })
-  }
-  chartAccumulated (data) {
+    });
+  };
+  x.chartAccumulated = function (data) {
     var options = {
       tooltips: {
         mode: 'index',
@@ -143,14 +142,14 @@ class Charts {
         animateScale: true,
         animateRotate: true
       }
-    }
-    var ctx = document.getElementById('accumulatedChart')// .getContext('2d')
-    var myLinesChart = new Chart (ctx, {
+    };
+    var ctx = document.getElementById('accumulatedChart'); // .getContext('2d')
+    var myLinesChart = new Chart(ctx, {
       type: 'line',
       data: data,
       options: options
-    })    
-  }
+    });
+  };
 }
 
 var formatter = new Intl.NumberFormat('es-CO', {
@@ -159,4 +158,4 @@ var formatter = new Intl.NumberFormat('es-CO', {
   minimumFractionDigits: 2
   // the default value for minimumFractionDigits depends on the currency
   // and is usually already 2
-})
+});
