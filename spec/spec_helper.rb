@@ -20,7 +20,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
-    
+    Capybara.current_driver = Capybara.javascript_driver    
     Rails.application.load_seed # loading seeds
   end
   config.expect_with :rspec do |expectations|
