@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function () {
     localStorage.removeItem('date_selected')
   })
   if (window.location.href.toString().split(window.location.host)[1] === '/') {
-    let charts = new Charts()
+    var charts = new Charts()
   }
 })
 class Charts {
@@ -39,7 +39,7 @@ class Charts {
   }
 
   chartByCategory (data) {
-    let options = {
+    var options = {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
@@ -59,7 +59,7 @@ class Charts {
         }
       }
     }
-    let d = {
+    var d = {
       datasets: [{
         data: data.values,
         backgroundColor: data.backgroundColors
@@ -67,8 +67,8 @@ class Charts {
       // These labels appear in the legend and in the tooltips when hovering different arcs
       labels: data.labels
     }
-    let ctx = document.getElementById('byCategoryChart')// .getContext('2d')
-    let myDoughnutChart = new Chart (ctx, {
+    var ctx = document.getElementById('byCategoryChart')// .getContext('2d')
+    var myDoughnutChart = new Chart (ctx, {
       type: 'doughnut',
       data: d,
       options: options
@@ -76,7 +76,7 @@ class Charts {
   }
 
   chartLast6Months (data) {
-    let options = {
+    var options = {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
@@ -96,8 +96,8 @@ class Charts {
         }]
       }
     }
-    let ctx = document.getElementById('lastSixMonthsChart')// .getContext('2d')
-    let myBarChart = new Chart (ctx, {
+    var ctx = document.getElementById('lastSixMonthsChart')// .getContext('2d')
+    var myBarChart = new Chart (ctx, {
       type: 'bar',
       data: data,
       options: options
@@ -132,7 +132,7 @@ class Charts {
     })
   }
   chartAccumulated (data) {
-    let options = {
+    var options = {
       tooltips: {
         mode: 'index',
         intersect: false
@@ -144,8 +144,8 @@ class Charts {
         animateRotate: true
       }
     }
-    let ctx = document.getElementById('accumulatedChart')// .getContext('2d')
-    let myLinesChart = new Chart (ctx, {
+    var ctx = document.getElementById('accumulatedChart')// .getContext('2d')
+    var myLinesChart = new Chart (ctx, {
       type: 'line',
       data: data,
       options: options
@@ -153,7 +153,7 @@ class Charts {
   }
 }
 
-let formatter = new Intl.NumberFormat('es-CO', {
+var formatter = new Intl.NumberFormat('es-CO', {
   style: 'currency',
   currency: 'COP',
   minimumFractionDigits: 2

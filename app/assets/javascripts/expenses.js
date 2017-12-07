@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function () {
   console.log('loading vals')
-  let hiddenDate = localStorage.getItem('date_selected')
+  var hiddenDate = localStorage.getItem('date_selected')
   if (hiddenDate != null) {
     $('#month_selector').val(hiddenDate)
   }
@@ -13,8 +13,8 @@ $(document).on('turbolinks:load', function () {
       'category_id': {required: true}
     },
     submitHandler: () => {
-      let formData = $('#expense-form').serializeArray() // store json object
-      let obj = {}
+      var formData = $('#expense-form').serializeArray() // store json object
+      var obj = {}
       formData.forEach(element => {
         obj[element['name']] = element['value']
       })
@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function () {
     }
   })
   $('.delete-btn').click(function () {
-    let id = $(this).val()
+    var id = $(this).val()
     swal.queue([{
       title: 'Eliminar',
       confirmButtonText: 'ok :-(',
@@ -61,8 +61,8 @@ $(document).on('turbolinks:load', function () {
     }])
   })
   $('.edit-btn').click(function () {
-    let id = $(this).val()
-    let obj = []
+    var id = $(this).val()
+    var obj = []
     $.ajax({
       url: `/expenses/${id}.json`,
       method: 'GET'
@@ -86,8 +86,8 @@ $(document).on('turbolinks:load', function () {
           'category_id': {required: true}
         },
         submitHandler: () => {
-          let formData = $('#edit-expense-form').serializeArray() // store json object
-          let obj = {}
+          var formData = $('#edit-expense-form').serializeArray() // store json object
+          var obj = {}
           formData.forEach(element => {
             obj[element['name']] = element['value']
           })
@@ -129,8 +129,8 @@ $(document).on('turbolinks:load', function () {
     var checks = $('.checkbox:checked').map(function () {
       return {name: this.name, value: this.value}
     }).get()
-    let date = new Date()
-    let dateSelector = $('#month_selector').val()
+    var date = new Date()
+    var dateSelector = $('#month_selector').val()
     dateSelector = dateSelector.split('-')
     date.setFullYear(dateSelector[0], dateSelector[1]-1, dateSelector[2])
     localStorage.setItem("date_selected", $('#month_selector').val())
