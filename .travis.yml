@@ -9,5 +9,8 @@ before_script:
   - bundle exec rake db:create --all
   - bundle exec rake db:migrate
   - bundle exec rake db:seed
+  - bundle exec rake db:migrate RAILS_ENV=test --trace
+  - bundle exec rake db:seed RAILS_ENV=test --trace
+
 script:
   - bundle exec rspec
