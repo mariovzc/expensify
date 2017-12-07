@@ -16,18 +16,28 @@ gem 'annotate'
 gem 'responders'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
+gem 'jquery-validation-rails'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'pg', '~> 0.18'
+gem 'will_paginate'
+gem 'rails-i18n', '~> 5.0.0'
+gem 'api-pagination'
 
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'sqlite3'
   gem 'rspec-rails', '~> 3.6'
   gem 'rails-controller-testing'
+  gem 'chromedriver-helper' # <- New!
+  gem 'rspec-retry'  
 end
-
+group :test do
+  gem 'database_cleaner'
+end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

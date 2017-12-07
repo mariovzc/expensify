@@ -1,0 +1,44 @@
+<div class="modal-body">
+  <div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Tipo:</label>
+          <%= select_tag "transaction_type_id", options_from_collection_for_select(@types, "id", "name"), class: "form-control #{type}_transaction_type_id", id: "transaction_type_id", include_blank: "Tipo de transacción...", name:"transaction_type_id", required: true%>                  
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Fecha:</label>
+          <input type="date" class="form-control <%=type +'_date'%>" name="date" id="date" required>                  
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Concepto:</label>
+          <input type="text" class="form-control <%=type + '_concept'%>" name="concept" id="concept" required>                  
+        </div>                    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Categoria:</label>
+          <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name"), class: "form-control #{type}_category_id", id: "category_id", include_blank: "Categoria....", name: "category_id", required: true%>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Cantidad:</label>
+          <input type="number" class="form-control <%=type + '_amount'%>" name="amount" id="amount" required>                  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary red-btn" data-dismiss="modal">Cancelar</button>
+  <button class="btn btn-primary green-btn"> <%= type %> </button>
+</div>

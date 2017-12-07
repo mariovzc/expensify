@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171120175122) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20171120175122) do
     t.string "concept"
     t.date "date"
     t.decimal "amount"
-    t.integer "category_id"
-    t.integer "transaction_type_id"
+    t.bigint "category_id"
+    t.bigint "transaction_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_expenses_on_category_id"
@@ -36,4 +39,6 @@ ActiveRecord::Schema.define(version: 20171120175122) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "transaction_types"
 end

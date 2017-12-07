@@ -25,3 +25,17 @@ t = ['Compras',
 p 'Transacciones'
 create_list(t, TransactionType)
 p ' Fin Transacciones'
+
+
+p 'Iniciando Gastos'
+600.times do
+  Expense.create(
+    concept: Faker::Lorem.sentence(3, true, 4),
+    date: Faker::Date.between(11.months.ago, Date.today.end_of_month),
+    amount: Faker::Commerce.price * 1000,
+    transaction_type_id: Faker::Number.between(1,4),
+    category_id: Faker::Number.between(1,7)
+  )
+end
+
+p ' Fin de gastos'
