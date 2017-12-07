@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   def index
     @title = 'Dashboard'
     @tab = :dashboard
+    @date = Time.now
   end
 
   def by_category

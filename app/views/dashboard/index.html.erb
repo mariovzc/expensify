@@ -1,4 +1,22 @@
 <div class="container-fluid dashboard-container">
+<section class="row text-center placeholders">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 placeholder">
+      <h4><%= number_to_currency(expense_today, unit: "COP ", precision: 0) %></h4>
+      <div class="text-muted">Hoy</div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 placeholder">
+      <h4><%= number_to_currency(expense_yesterday, unit: "COP ", precision: 0) %></h4>
+      <span class="text-muted">Ayer</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 placeholder">
+      <h4><%= number_to_currency(expense_current_month, unit: "COP ", precision: 0) %></h4>
+      <span class="text-muted">Este mes</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 placeholder">
+        <h4><%= number_to_currency(expense_last_month, unit: "COP ", precision: 0) %></h4>
+        <span class="text-muted">Mes Anterior</span>
+      </div>
+  </section>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <div class="card">
