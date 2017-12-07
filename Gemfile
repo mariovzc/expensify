@@ -32,7 +32,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
   gem 'rails-controller-testing'
-  gem 'chromedriver-helper' # <- New!  
+  gem 'chromedriver-helper' # <- New!
+  gem 'rspec-retry'  
 end
 group :test do
   gem 'database_cleaner'
