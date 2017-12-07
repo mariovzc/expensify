@@ -22,6 +22,9 @@ gem 'pg', '~> 0.18'
 gem 'will_paginate'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'api-pagination'
+gem 'sprockets-rails', github: 'rails/sprockets-rails', branch: 'master'
+gem 'sprockets', github: 'rails/sprockets', branch: 'master'
+gem 'babel-transpiler'
 
 gem 'rack-cors', :require => 'rack/cors'
 
