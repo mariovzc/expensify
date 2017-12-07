@@ -16,7 +16,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/doc/controllers_brief.svg
+/doc/models_brief.svg
 /node_modules
 /yarn-error.log
 
