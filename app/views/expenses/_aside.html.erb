@@ -12,7 +12,7 @@
     <% @types.each do |type| %>
       <li class="nav-item">
         <div class="form-check form-check-inline radio-item">
-          <%= radio_button_tag 'transaction_type_id',type.id, params[:transaction_type_id].try(:include?,type.id.to_s),{:id=>'transaction_type_id'+type.id.to_s, class: 'form-check-input checkbox'} %>
+          <%= radio_button_tag 'transaction_type_id',type.id, params[:transaction_type_id].try(:include?,type.id.to_s),{:id=>'transaction_type_id'+type.id.to_s, class: "form-check-input checkbox transaction_type_id_#{type.id}"} %>
           <%= label_tag 'transaction_type_id'+type.id.to_s, type.name %>
         </div>
       </li>

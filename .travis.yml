@@ -1,13 +1,25 @@
 language: ruby
 rvm:
   - 2.4.1
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
+addons:
+  postgresql: "9.6"
+  chrome: stable
+  apt:
+    sources:
+      - sourceline: "ppa:mc3man/trusty-media"
+      - sourceline: "ppa:ubuntuhandbook1/apps"
+
+before_install:
+  - "rm ${BUNDLE_GEMFILE}.lock"
+  - "travis_retry gem update --system"
+  - "travis_retry gem install bundler -v 1.15.4"
+
 before_script:
   - bundle exec rake db:create --all
   - bundle exec rake db:migrate
   - bundle exec rake db:seed
+  - bundle exec rake db:migrate RAILS_ENV=test --trace
+  - bundle exec rake db:seed RAILS_ENV=test --trace
+
 script:
   - bundle exec rspec
