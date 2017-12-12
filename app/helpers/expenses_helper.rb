@@ -28,13 +28,13 @@ module ExpensesHelper
 
   def expenses_total
     count = 0
-    @expenses.each do |ex|
+    @total.each do |ex|
       count += ex.amount
     end
     count
   end
   def expenses_average
-    @expenses.count > 0 ? expenses_total / @expenses.count : 0
+    @total.count > 0 ? expenses_total / @expenses.count : 0
   end
 
   def last_12_months
