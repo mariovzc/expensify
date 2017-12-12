@@ -109,9 +109,11 @@ class DashboardController < ApplicationController
   end
 
   def days_expenses(days, month, year)
-    values = []    
+    values = []
+    accumulated = 0    
     days.times do |i|
-      values.push(Expense.with_month(month).with_year(year).with_day(i+1).sum(&:amount))
+      accumulated += Expense.with_month(month).with_year(year).with_day(i+1).sum(&:amount)
+      values.push(accumulated)
     end
     values
   end
