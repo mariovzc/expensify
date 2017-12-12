@@ -27,11 +27,7 @@ module ExpensesHelper
   end
 
   def expenses_total
-    count = 0
-    @total.each do |ex|
-      count += ex.amount
-    end
-    count
+    @total.sum(&:amount)
   end
   def expenses_average
     @total.count > 0 ? expenses_total / @expenses.count : 0
